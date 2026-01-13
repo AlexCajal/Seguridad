@@ -14,7 +14,9 @@ public class UsuarioUseCases {
         this.usuarioRepository = usuarioRepository;
     }
     public boolean registro (Usuario user){
-        String pass = Hashing.sha256().hashString(user.getContrasenia(), StandardCharsets.UTF_8).toString();
+        String pass = Hashing.sha256()
+                .hashString(user.getContrasenia(), StandardCharsets.UTF_8)
+                .toString();
         Usuario cifrado = new Usuario(user.getEmail(),pass);
         return this.usuarioRepository.registro(cifrado);
     }
