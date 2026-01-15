@@ -11,8 +11,8 @@ import java.sql.SQLException;
 public class UsuarioRepositoryMySQL implements UsuarioRepository {
     @Override
     public boolean registro(Usuario user) {
-        String query = "INSERT INTO usuario (?,?)";
-        PreparedStatement statement = null;
+        String query = "INSERT INTO usuario VALUES (?,?);";
+        PreparedStatement statement;
         try {
             statement = MySQLConnection.getInstance().prepareStatement(query);
             statement.setString(1,user.getEmail());
@@ -32,7 +32,7 @@ public class UsuarioRepositoryMySQL implements UsuarioRepository {
         try {
             statement = MySQLConnection.getInstance().prepareStatement(query);
             statement.setString(1,user.getEmail());
-            ResultSet rs = statement.executeQuery(query);
+            ResultSet rs = statement.executeQuery();
             while (rs.next()){
                 return new Usuario(rs.getString("email"),rs.getString("contrasenia"));
             }

@@ -18,6 +18,7 @@ public class MySQLConnection {
                         "admin", "admin12345.");
             } catch (SQLException sqlException) {
                 throw new RuntimeException(sqlException);
+
             }
         }
         return connection;

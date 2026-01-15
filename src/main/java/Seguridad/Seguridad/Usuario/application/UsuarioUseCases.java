@@ -20,4 +20,11 @@ public class UsuarioUseCases {
         Usuario cifrado = new Usuario(user.getEmail(),pass);
         return this.usuarioRepository.registro(cifrado);
     }
+    public Usuario login (Usuario user){
+        Usuario userCifrado = this.usuarioRepository.login(user);
+        if (userCifrado == null) return null;
+        String pass = Hashing.sha256().hashString(user.getContrasenia(), StandardCharsets.UTF_8).toString();
+        if (userCifrado.getContrasenia().equals(pass)) return user;
+        else return null;
+    }
 }

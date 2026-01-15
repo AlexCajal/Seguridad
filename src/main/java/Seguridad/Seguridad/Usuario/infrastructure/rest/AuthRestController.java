@@ -24,12 +24,13 @@ public class AuthRestController {
     @PostMapping("/registro")
     public String registro(@RequestBody Usuario user){
         boolean correcto = this.usuarioUseCases.registro(user);
-        if (correcto){
-            return "Registrado correctamente";
-        }else return "mal";
+        if (correcto) return "Registrado correctamente";
+        else return "mal";
     }
     @PostMapping("/login")
     public String login(@RequestBody Usuario user){
-        Usuario userDB = this.usuarioUseCases.
+        Usuario userDB = this.usuarioUseCases.login(user);
+        if (userDB != null) return jwtService.generateToken(userDB.getEmail());
+        else return "User o passwor incorrecta";
     }
 }
