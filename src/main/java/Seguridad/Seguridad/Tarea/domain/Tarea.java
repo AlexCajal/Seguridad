@@ -1,6 +1,7 @@
 package Seguridad.Seguridad.Tarea.domain;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class Tarea {
     private String ID;
@@ -10,15 +11,16 @@ public class Tarea {
     private Timestamp fechFin;
     private boolean estado;
     private String emailCreador;
+    private ArrayList<String> listaUser;
 
-    public Tarea(String ID, String texto, String prioridad, Timestamp fechaInicio, Timestamp fechFin, boolean estado, String emailCreador) {
+    public Tarea(String ID, String texto, String prioridad, Timestamp fechaInicio, Timestamp fechFin, boolean estado) {
         this.ID = ID;
         this.texto = texto;
         this.prioridad = prioridad;
         this.fechaInicio = fechaInicio;
         this.fechFin = fechFin;
         this.estado = estado;
-        this.emailCreador = emailCreador;
+        this.emailCreador = null;
     }
 
     public String getID() {
@@ -47,5 +49,13 @@ public class Tarea {
 
     public String getEmailCreador() {
         return emailCreador;
+    }
+
+    public ArrayList<String> getListaUser() {
+        return listaUser;
+    }
+
+    public void setEmailCreador(String emailCreador) {
+        this.emailCreador = emailCreador;
     }
 }
