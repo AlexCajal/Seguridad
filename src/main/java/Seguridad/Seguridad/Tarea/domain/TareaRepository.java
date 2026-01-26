@@ -8,4 +8,6 @@ public interface TareaRepository {
     public ArrayList<Tarea> getLista(Usuario user);
     public Tarea guardarTarea(Tarea t);
     public boolean asignarTarea(String idTarea, String emailUser);
+    public Tarea datosTarea(String id);
+    public Tarea getUserTares(Tarea t);
 }

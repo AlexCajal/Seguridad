@@ -73,5 +73,35 @@ public class TareaRepositoryMySQL implements TareaRepository {
         }
     }
 
+    @Override
+    public Tarea datosTarea(String id) {
+        String query = "SELECT * FROM tarea WHERE ID = ?";
+        PreparedStatement st = null;
+        Tarea t = null;
 
+        try {
+            st = MySQLConnection.getInstance().prepareStatement(query);
+            st.setString(1,id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String ID = rs.getString("ID");
+                String texto = rs.getString("texto");
+                String prioridad = rs.getString("prioridad");
+                Timestamp fechaInicio = rs.getTimestamp("fechaInicio");
+                Timestamp fechaFin = rs.getTimestamp("fechaFin");
+                boolean estado = rs.getBoolean("estado");
+
+                t = new Tarea(ID, texto, prioridad, fechaInicio, fechaFin, estado);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return t;
+    }
+
+    @Override
+    public Tarea getUserTares(Tarea t) {
+
+    }
 }

@@ -37,4 +37,8 @@ public class TareaRestController {
         if (this.tareaUseCases.asignarTarea(idTarea,emailUser,user));
         return "Error al asignar la tarea";
     }
+    @GetMapping("{id}")
+    public Tarea datosTarea(@PathVariable String id){
+        return this.tareaUseCases.datosTarea(id);
+    }
 }

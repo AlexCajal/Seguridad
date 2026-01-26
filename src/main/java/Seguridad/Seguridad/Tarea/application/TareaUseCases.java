@@ -21,7 +21,10 @@ public class TareaUseCases {
         return tareaRepository.guardarTarea(t);
     }
     public boolean asignarTarea(String idTarea, String emailUser, Usuario user){
-
         return tareaRepository.asignarTarea(idTarea, emailUser);
+    }
+    public Tarea datosTarea(String id){
+        Tarea t = tareaRepository.datosTarea(id);
+
     }
 }
