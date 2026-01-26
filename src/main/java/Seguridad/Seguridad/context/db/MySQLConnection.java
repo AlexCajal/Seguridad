@@ -14,7 +14,7 @@ public class MySQLConnection {
         if (connection == null) {
             try {
                 connection = DriverManager.getConnection(
-                        "jdbc:mysql://seguridad1.c8ej9m6tv9ur.us-east-1.rds.amazonaws.com/Seguridad",
+                        "jdbc:mysql://servidortareas2.cwasnfjfbjhw.us-east-1.rds.amazonaws.com/Seguridad",
                         "admin", "admin12345.");
             } catch (SQLException sqlException) {
                 throw new RuntimeException(sqlException);
